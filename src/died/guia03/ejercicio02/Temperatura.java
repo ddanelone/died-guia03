@@ -24,6 +24,12 @@ public class Temperatura {
         String simbolo = (escala == Escala.CELCIUS) ? "C°" : "F°";
         return grados + " " + simbolo;
     }
+    public Escala getEscala() {
+    	return this.escala;
+    };
+    public double getGrados() {
+    	return this.grados;
+    };
     
     public double asCelcius() {
         if (escala == Escala.CELCIUS) {
@@ -64,5 +70,17 @@ public class Temperatura {
             return grados;
         }
     }
+
+    public int comparar(Temperatura otra) {
+        double diferencia = this.getGrados() - otra.getGrados();
+        if (Math.abs(diferencia) < 0.0001) {
+            return 0;
+        } else if (diferencia > 0) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
     
 }
